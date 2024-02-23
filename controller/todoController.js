@@ -27,12 +27,14 @@ const CreateTodos = asyncHandler(async (req, res) => {
 
 
 const UpdateTodos = asyncHandler(async (req, res) => {
-    const { id } = req.params
-    console.log(id);
-    const todo = await todos.findByIdAndUpdate({
+    const  id = req.params.id
+    const {data}=req.body
+    console.log(data,"sjdvb,sjdvb");
+    console.log(id,"sjdvb,sjmbfdjbfbjkdf,dfmjkdvb");
+    const todo = await todos.findByIdAndUpdate(
         id,
-        ...req.body
-    });
+        data
+    );
     if (!todo) {
         res.status(404);
         throw new Error("task not found");
@@ -41,12 +43,14 @@ const UpdateTodos = asyncHandler(async (req, res) => {
 });
 
 const UpdateStatus = asyncHandler(async (req, res) => {
-    const { id } = req.params
+    const id = req.params.id
     console.log(id);
-    const todo = await todos.findByIdAndUpdate({
+    // const status
+    console.log(req.body.status);
+    const todo = await todos.findByIdAndUpdate(
         id,
-    ...req.body
-    })
+        req.body
+    )
     if (!todo) {
         res.status(404);
         throw new Error("task not found");
@@ -65,4 +69,4 @@ const DeleteTodos = asyncHandler(async (req, res) => {
     res.status(200).json({ todo });
 });
 
-module.exports = { getTodos, DeleteTodos, UpdateTodos, CreateTodos ,UpdateStatus}
+module.exports = { getTodos, DeleteTodos, UpdateTodos, CreateTodos, UpdateStatus }
