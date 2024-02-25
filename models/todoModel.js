@@ -20,6 +20,21 @@ const todoSchema = new mongoose.Schema({
     priority: {
         required: true,
         type: String
+    },
+    time: {
+        required: true,
+        type: String
+    },
+    order: {
+        type: Number
+    },
+    userId: {
+        type: String,
+        required: true
+    },
+    reminded: {
+        default:false,
+        type: Boolean
     }
 })
 
