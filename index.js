@@ -16,9 +16,11 @@ app.use(cors({
     origin: ["http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-  }))
+}))
+
 app.use(bodyParser.json());
 app.use(express.json());
+
 app.use("/todo", require("./router/todoRouter"));
 app.use("/user", require("./router/userRouter"));
 app.use("/notification", require("./router/notificationRouter"));

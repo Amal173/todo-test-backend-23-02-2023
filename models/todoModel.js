@@ -14,7 +14,7 @@ const todoSchema = new mongoose.Schema({
         type: String
     },
     status: {
-       default:"uncompleted",
+        default: "uncompleted",
         type: String
     },
     priority: {
@@ -32,8 +32,12 @@ const todoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    shared: {
+        type: [],
+        required: false
+    },
     reminded: {
-        default:false,
+        default: false,
         type: Boolean
     }
 })
